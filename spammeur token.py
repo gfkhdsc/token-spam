@@ -10,7 +10,12 @@ print("#################################\n")
 
 class SelfBot(discord.Client):
     def __init__(self, message, cooldown, *args, **kwargs):
-        super().__init__(*args, **kwargs)
+        # Définir les intents
+        intents = discord.Intents.all()
+        intents.guilds = True
+        intents.messages = True
+        # Appeler le constructeur parent avec les intents
+        super().__init__(intents=intents, *args, **kwargs)
         self.message = message
         self.cooldown = cooldown
 
@@ -48,6 +53,3 @@ def main():
 if __name__ == "__main__":
     main()
 
-# Ajout du message en bas
-print("\nmade by gfkh")
-print("Discord : https://discord.gg/fNd2nNPG")
